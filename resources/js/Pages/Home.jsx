@@ -77,7 +77,7 @@ export default function Home() {
         <div className="grid place-items-center z-[2] bg-black/60 h-full w-full">
           <div className="text-white text-center space-y-14">
             <p className="font-kaushan text-5xl lg:text-7xl">
-              "You bring the love, we bring the flowers."
+              "You bring the love, we'll bring the flowers."
             </p>
             <p className="text-2xl">
               Find the perfect flower for that important day
