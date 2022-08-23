@@ -55,12 +55,22 @@ export default function Nav() {
               Sign Up
             </li>
           </ul>
-          <BsCart2 className="text-4xl pl-3" />
+          <div className="relative">
+            <BsCart2 className="text-4xl pl-3" />
+            <span className="absolute top-0 right-0 bg-red-500 text-xs text-white px-1 rounded-full translate-x-1/2">
+              2
+            </span>
+          </div>
         </div>
 
         <ul className="flex lg:hidden space-x-3 text-xl">
           <li>
-            <BsCart2 />
+            <div className="relative">
+              <BsCart2 />
+              <span className="absolute top-0 right-0 bg-red-500 text-xs text-white px-1 rounded-full translate-x-1/2 -translate-y-1/2">
+                2
+              </span>
+            </div>
           </li>
           <li>
             <button onClick={toggleNav}>
