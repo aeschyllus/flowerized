@@ -1,5 +1,6 @@
 import { Link } from "@inertiajs/inertia-react";
-import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
+import { AiFillFacebook, AiFillPhone } from "react-icons/ai";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 export default function Footer() {
   const footerLinks = [
@@ -38,13 +39,28 @@ export default function Footer() {
           </ul>
         </section>
         <section>
-          <h2 className="text-lg uppercase font-bold">Follow Us</h2>
-          <ul className="flex space-x-3 text-xl text-neutral-500">
-            <li>
-              <AiFillFacebook />
+          <h2 className="text-lg uppercase font-bold">Contact Us</h2>
+          <ul className="text-neutral-500">
+            <li className="flex items-center space-x-3">
+              <a
+                href="https://www.facebook.com/bloomsbymarra"
+                className="text-xl"
+              >
+                <AiFillFacebook />
+              </a>
+              <p>Blooms by Marra</p>
             </li>
-            <li>
-              <AiFillInstagram />
+            <li className="flex items-center space-x-3">
+              <a className="text-xl">
+                <AiFillPhone />
+              </a>
+              <p>(+63) 999-604-0668</p>
+            </li>
+            <li className="flex items-center space-x-3">
+              <a className="text-xl">
+                <FaMapMarkerAlt />
+              </a>
+              <p>III McArthur Highway, Marulas, Valenzuela</p>
             </li>
           </ul>
         </section>
