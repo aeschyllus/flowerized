@@ -9,17 +9,19 @@ use Inertia\Inertia;
 
 class LoginController extends Controller
 {
-    public function create() {
+    public function create()
+    {
         return Inertia::render('Auth/SignIn');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => 'required'
         ]);
 
-        if(Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended();
         }
@@ -27,5 +29,11 @@ class LoginController extends Controller
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.'
         ]);
+    }
+
+    public function destroy()
+    {
+        Auth::destroy();
+        return redirect('/');
     }
 }

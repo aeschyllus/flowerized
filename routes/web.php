@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [LoginController::class, 'create']);
 Route::post('/login', [LoginController::class, 'store'])->name('login');
+Route::post('/logout', [LoginController::class, 'destroy'])->middleware('auth');
 
 Route::inertia('/', 'Home');
 Route::inertia('/events', 'Events');
