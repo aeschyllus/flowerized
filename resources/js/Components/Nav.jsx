@@ -1,4 +1,4 @@
-import { usePage } from "@inertiajs/inertia-react";
+import { Link, usePage } from "@inertiajs/inertia-react";
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
@@ -49,12 +49,16 @@ export default function Nav() {
               />
             ))}
           </ul>
+
           <ul className="flex items-center space-x-3 pl-3">
-            <li>Sign In</li>
+            <li>
+              <Link href="/login">Sign In</Link>
+            </li>
             <li className="bg-yellow-500 text-white rounded-lg px-2 py-1">
               Sign Up
             </li>
           </ul>
+
           <div className="relative">
             <BsCart2 className="text-4xl pl-3" />
             <span className="absolute top-0 right-0 bg-red-500 text-xs text-white px-1 rounded-full translate-x-1/2">

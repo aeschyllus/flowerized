@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,22 +14,11 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Home');
-});
+Route::get('/login', [LoginController::class, 'create']);
+Route::post('/login', [LoginController::class, 'store'])->name('login');
 
-Route::get('/events', function () {
-    return Inertia::render('Events');
-});
-
-Route::get('/customize', function () {
-    return Inertia::render('Customize');
-});
-
-Route::get('/about-us', function () {
-    return Inertia::render('AboutUs');
-});
-
-Route::get('/contact-us', function () {
-    return Inertia::render('ContactUs');
-});
+Route::inertia('/', 'Home');
+Route::inertia('/events', 'Events');
+Route::inertia('/customize', 'Customize');
+Route::inertia('/about-us', 'AboutUs');
+Route::inertia('/contact-us', 'ContactUs');

@@ -130,7 +130,10 @@ export default function Home() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             {reviews.map((review) => (
-              <figure className="lg:flex shadow-lg p-8 lg:p-0 bg-white">
+              <figure
+                className="lg:flex shadow-lg p-8 lg:p-0 bg-white"
+                key={review.name}
+              >
                 <img
                   src={review.src}
                   alt={review.name}
