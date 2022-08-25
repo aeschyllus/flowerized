@@ -32,12 +32,15 @@ export default function SigIn() {
   };
 
   return (
-    <section className="bg-neutral-200 h-screen grid place-items-center p-3">
-      <div className="bg-white p-11 shadow-lg">
-        <div className="text-4xl flex items-center justify-center text-yellow-600 space-x-2 mb-7">
+    <section className="bg-neutral-200 h-screen grid place-items-center p-3 overflow-auto">
+      <div className="bg-white px-7 lg:px-11 py-11 shadow-lg">
+        <Link
+          href="/"
+          className="text-4xl flex items-center justify-center text-yellow-600 space-x-2 mb-7"
+        >
           <IoFlowerOutline />
           <h1>Flowerized</h1>
-        </div>
+        </Link>
 
         <form onSubmit={submit}>
           <div>

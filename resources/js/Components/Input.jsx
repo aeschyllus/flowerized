@@ -5,7 +5,7 @@ export default function Input({
   name,
   value,
   className,
-  autoComplete,
+  autoComplete = "off",
   required,
   isFocused,
   handleChange,
