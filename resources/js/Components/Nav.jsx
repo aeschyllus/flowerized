@@ -54,8 +54,13 @@ export default function Nav() {
             <li>
               <Link href="/login">Sign In</Link>
             </li>
-            <li className="bg-yellow-500 text-white rounded-lg px-2 py-1">
-              Sign Up
+            <li>
+              <Link
+                href="/register"
+                className="bg-yellow-500 text-white rounded-lg px-2 py-1"
+              >
+                Sign Up
+              </Link>
             </li>
           </ul>
 
