@@ -1,6 +1,7 @@
 import { Link, usePage } from "@inertiajs/inertia-react";
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import { BiChevronDown } from "react-icons/bi";
 import { BsCart2 } from "react-icons/bs";
 import { FiMenu } from "react-icons/fi";
 import { IoFlowerOutline } from "react-icons/io5";
@@ -9,6 +10,7 @@ import NavLinkMobile from "./NavLinkMobile";
 
 export default function Nav() {
   const [nav, setNav] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
   const { component, props } = usePage();
   const { auth } = props;
   const navLinks = [
@@ -28,6 +30,7 @@ export default function Nav() {
   ];
 
   const toggleNav = () => setNav(!nav);
+  const toggleDropdown = () => setDropdown(!dropdown);
 
   return (
     <>
@@ -54,7 +57,7 @@ export default function Nav() {
 
         <div className="hidden lg:flex items-center divide-x divide-yellow-600 space-x-3">
           {auth.user && (
-            <div className="relative mr-3">
+            <div className="relative mx-3">
               <BsCart2 className="text-2xl" />
               <span className="absolute top-0 right-0 bg-red-500 text-xs text-white px-1 rounded-full translate-x-1/2 -translate-y-1/2">
                 2
@@ -63,9 +66,36 @@ export default function Nav() {
           )}
 
           {auth.user ? (
-            <Link method="post" as="button" href="/logout" className="pl-3">
-              Hello, {auth.user.first_name}
-            </Link>
+            <div className="relative">
+              <button
+                className="pl-3 flex items-center"
+                onClick={toggleDropdown}
+              >
+                Hello, {auth.user.first_name}{" "}
+                <BiChevronDown className="text-lg" />
+              </button>
+
+              <div
+                className={`bg-yellow-600 absolute right-0 origin-top-right w-56 mt-2 ${
+                  dropdown
+                    ? "transition ease-out transform opacity-100 scale-100"
+                    : "transition ease-in transform opacity-0 scale-95"
+                }`}
+              >
+                <div className="py-1 text-white">
+                  {auth.user.is_admin && <p className="px-4 py-2">Dashboard</p>}
+                  <p className="px-4 py-2">Profile</p>
+                  <Link
+                    href="/logout"
+                    as="button"
+                    method="post"
+                    className="px-4 py-2 uppercase"
+                  >
+                    Log out
+                  </Link>
+                </div>
+              </div>
+            </div>
           ) : (
             <ul className="flex items-center space-x-3 pl-3">
               <li>
@@ -120,35 +150,35 @@ export default function Nav() {
           {auth.user ? (
             <>
               <li>
-                <Link href="/profile" className="uppercase">
+                <button href="/profile" className="uppercase">
                   {component === "Profile" && (
                     <span className="absolute mt-2 left-3 bg-red-500 w-2 h-2 rounded-full"></span>
                   )}
                   Profile
-                </Link>
+                </button>
               </li>
               <li>
-                <Link
+                <button
                   href="/logout"
                   as="button"
                   method="post"
                   className="uppercase"
                 >
                   Log Out
-                </Link>
+                </button>
               </li>
             </>
           ) : (
             <>
               <li>
-                <Link href="/login" className="uppercase">
+                <button href="/login" className="uppercase">
                   Sign In
-                </Link>
+                </button>
               </li>
               <li>
-                <Link href="/regsiter" className="uppercase">
+                <button href="/regsiter" className="uppercase">
                   Sign Up
-                </Link>
+                </button>
               </li>
             </>
           )}
