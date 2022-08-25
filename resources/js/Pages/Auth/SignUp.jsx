@@ -11,13 +11,12 @@ export default function SigUp() {
     firstName: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    password_confirmation: "",
   });
 
   useEffect(() => {
     return () => {
-      reset("password");
-      reset("confirmPassword");
+      reset("password", "password_confirmation");
     };
   }, []);
 
@@ -36,8 +35,8 @@ export default function SigUp() {
   };
 
   return (
-    <section className="bg-neutral-200 h-screen grid place-items-center p-3">
-      <div className="bg-white p-11 shadow-lg">
+    <section className="bg-neutral-200 h-screen grid place-items-center p-3 overflow-auto">
+      <div className="bg-white px-7 lg:px-11 py-11 shadow-lg">
         <Link
           href="/"
           className="text-4xl flex items-center justify-center text-yellow-600 space-x-2 mb-7"
@@ -96,6 +95,22 @@ export default function SigUp() {
               handleChange={onHandleChange}
             />
             <InputError message={errors.password} className="mt-2" />
+          </div>
+
+          <div className="mt-4">
+            <InputLabel forInput="password_confirmation" value="Password" />
+            <Input
+              type="password"
+              name="password_confirmation"
+              value={data.password_confirmation}
+              className="mt-1 block w-full"
+              autoComplete="current-password"
+              handleChange={onHandleChange}
+            />
+            <InputError
+              message={errors.password_confirmation}
+              className="mt-2"
+            />
           </div>
 
           <div className="mt-7 lg:flex lg:space-x-3">
