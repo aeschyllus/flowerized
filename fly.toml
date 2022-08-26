@@ -6,13 +6,15 @@ kill_timeout = 5
 processes = []
 
 [build]
-  builder = "heroku/buildpacks:20"
+  builder = "heroku/php"
+  builder = "heroku/nodejs"
   [build.args]
     NODE_VERSION = "14"
     PHP_VERSION = "8.1"
 
 [env]
-  APP_ENV = "production"
+  APP_DEBUG = true
+  APP_ENV = "development"
   LOG_CHANNEL = "stderr"
   LOG_LEVEL = "info"
   LOG_STDERR_FORMATTER = "Monolog\\Formatter\\JsonFormatter"
